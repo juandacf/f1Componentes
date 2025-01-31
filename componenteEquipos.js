@@ -95,64 +95,59 @@ class eliminarEquipos extends HTMLElement{
 
     async connectedCallback(){
         this.shadowRoot.innerHTML= /*html*/`
-        <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Pais</th>
-                <th>Motor</th>
-            </tr>
-        </thead>
-        <tbody id="equiposBody">
-        </tbody>
-    </table>
+        <form action="" id="myform">
+            <label for="buscar"> Buscar</label><input type="text" id="buscarEditar"> <br>
+            <label for="id"> ID equipo</label><input type="text" name="id"> <br>
+            <label for="nombre"> Nombre Equipo</label><input type="text" name="nombre"disabled> <br>
+            <label for="pais"> pais</label><input type="text" name="pais" disabled> <br>
+            <label for="motor"> Motor</label><input type="text" name="motor" disabled> <br>
+            <label for="imagen"> Imagen</label><input type="text" name="imagen" disabled> <br>
+            <input type="submit" value="submit" class="submitButton"> 
+        </form>
     `
-    this.cargarEquipos();
-    }
-    async obtenerEquipos() {
-        try {
-            const response = await fetch("http://localhost:3000/equipos");
-            if(!response.ok){
-                throw new Error('No se pudieron obtener los equipos')
-            }
-            return await response.json()
+    this.shadowRoot.querySelector("#buscarEditar").addEventListener('input', async (e)=>{
+        let textSearch = e.target.value;
+        const result = await this.buscarEquipo(textSearch);
+        if(result){
+            this.editForm(result);
+        }else {
+            this.clearForm();
         }
-        catch (error){
-            console.error(error);
-            return []
-        }
-    }
+    })
 
-    async cargarEquipos(){
-        const equipos = await this.obtenerEquipos();
-        console.log(equipos)
-        const  equiposBody = this.shadowRoot.querySelector("#equiposBody");
-        equipos.forEach(equipo =>{
-            const row = document.createElement('tr');
-            row.innerHTML=/*html*/`
-                <td>${equipo.id}</td>
-                <td>${equipo.nombre}</td>
-                <td>${equipo.pais}</td>
-                <td>${equipo.motor}</td>
-                <td><button class="delete-btn" data-id="${equipo.id}">Eliminar</button></td>
-            
-            ` 
-            equiposBody.appendChild(row);
-        });
-        this.deleteButtonTrigger();
+    this.shadowRoot.querySelector("#myform").addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        let data = Object.fromEntries(new FormData(e.target))
+        const teamID = data.id;
+        this.deleteTeam(teamID);
+    })
 
     }
 
-    async deleteButtonTrigger(){
-        const botonEliminar = this.shadowRoot.querySelectorAll(".delete-btn");
-        botonEliminar.forEach(button=>{
-            button.addEventListener('click', (e)=>{
-                const idEquipo = e.target.dataset.id;
-                 this.deleteTeam(idEquipo)
-            })
-        })
+    async buscarEquipo(inputUsuario){
+        const url = `http://localhost:3000/equipos/`;
+        const response = await fetch(url);
+        const data = await response.json();
+        const result = data.filter(producto => producto.nombre.toLowerCase().includes(inputUsuario.toLowerCase()));
+        return result.length > 0 ? result[0] : null;
     }
+
+    editForm(product){
+        this.shadowRoot.querySelector('input[name="id"]').value = product.id;
+        this.shadowRoot.querySelector('input[name="nombre"]').value= product.nombre;
+        this.shadowRoot.querySelector('input[name="pais"]').value= product.pais;
+        this.shadowRoot.querySelector('input[name="motor"]').value= product.motor;
+        this.shadowRoot.querySelector('input[name="imagen"]').value= product.imagen;
+    }
+    clearForm(){
+        this.shadowRoot.querySelector('input[name="id"]').value = "";
+        this.shadowRoot.querySelector('input[name="nombre"]').value= "";
+        this.shadowRoot.querySelector('input[name="pais"]').value= "";
+        this.shadowRoot.querySelector('input[name="motor"]').value= "";
+        this.shadowRoot.querySelector('input[name="imagen"]').value= "";
+    }
+
+
 
     async deleteTeam(id){
         try{
@@ -171,7 +166,7 @@ class eliminarEquipos extends HTMLElement{
     }
 }
 
-// customElements.define('eliminar-equipo', eliminarEquipos)
+ customElements.define('eliminar-equipo', eliminarEquipos)
 
 class editarEquipos extends HTMLElement{
     constructor(){
