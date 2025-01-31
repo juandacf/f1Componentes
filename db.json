@@ -24,6 +24,12 @@
           "nombre": "Max Verstappen",
           "imagen": "",
           "rol": "Líder"
+        },
+        {
+          "id": "fwe",
+          "nombre": "wef",
+          "imagen": "wef",
+          "rol": "wef"
         }
       ]
     },
@@ -33,7 +39,26 @@
       "pais": "Paraguay",
       "motor": "AKT",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Red_Bull_Racing_Logo.svg",
-      "pilotos": []
+      "pilotos": [
+        {
+          "id": "rwe",
+          "nombre": "wer",
+          "imagen": "wer",
+          "rol": "wer"
+        },
+        {
+          "id": "fwe",
+          "nombre": "wef",
+          "imagen": "wef",
+          "rol": "wef"
+        },
+        {
+          "id": "21",
+          "nombre": "ejemplo",
+          "imagen": "ejemplo",
+          "rol": "ejemplo"
+        }
+      ]
     }
   ],
   "circuitos": [

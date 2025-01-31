@@ -77,6 +77,9 @@ class verEquipos extends HTMLElement {
             team.className = 'teamElement';
             team.innerHTML= /*html*/`
             <p> ${equipo.id}</p>
+            <p>${equipo.nombre}</p>
+            <p>${equipo.pais}</p>
+            <p>${equipo.motor}</p>
             `
             teamContainer.appendChild(team);
         });
