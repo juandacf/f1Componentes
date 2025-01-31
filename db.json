@@ -8,28 +8,22 @@
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Red_Bull_Racing_Logo.svg",
       "pilotos": [
         {
-          "id": 1,
+          "id": "01",
           "nombre": "Max Verstappen",
           "imagen": "",
           "rol": "Líder"
         },
         {
-          "id": 1,
+          "id": "02",
           "nombre": "Max Verstappen",
           "imagen": "",
           "rol": "Líder"
         },
         {
-          "id": 1,
+          "id": "03",
           "nombre": "Max Verstappen",
           "imagen": "",
           "rol": "Líder"
-        },
-        {
-          "id": "fwe",
-          "nombre": "wef",
-          "imagen": "wef",
-          "rol": "wef"
         }
       ]
     },
