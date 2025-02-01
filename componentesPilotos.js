@@ -267,31 +267,23 @@ class eliminarPilotos extends HTMLElement{
             })            
         )
         
-        // this.shadowRoot.querySelector("#myform").addEventListener('submit', async (e)=>{
-        //     e.preventDefault();
-        //     let data = Object.fromEntries(new FormData(e.target));
-        //     const teamID = this.shadowRoot.querySelector("#idEquipo").value;
-        //     const formattedData = JSON.stringify(data);
-        //     try{
-        //         const response = await fetch(`http://localhost:3000/equipos/${teamID}/`);
-        //         const responseFormatted = await response.json();
-        //         var pilotos = responseFormatted.pilotos;
-        //         pilotos.push(data)
-        //         var finalData = {"pilotos": pilotos};
-        //         fetch(`http://localhost:3000/equipos/${teamID}`,{ 
-        //             method: "PATCH",
-        //             headers: {
-        //                 "Content-Type": "application/json"
-        //             },
-        //             body: JSON.stringify(finalData),}
-        //         )
-        //     }catch(error){
-        //         console.error(error)
-        //     }
-        // })
     }
 
     }
-
-
 customElements.define('eliminar-pilotos', eliminarPilotos)
+
+class editarPilotos extends HTMLElement{
+    constructor(){
+        super();
+        this.attachShadow({mode:"open"})
+    }
+
+    connectedCallback(){
+        this.shadowRoot.innerHTML = /*html*/ `
+        <label>Buscar <input type="text" id="buscarEditar"></label>
+        <label>Codigo <input type="text" name="id" disabled></label>
+        <label>Nombre <input type="text" name="nombre"></label>
+        `
+    }
+}
+customElements.define('editar-pilotos', editarPilotos)

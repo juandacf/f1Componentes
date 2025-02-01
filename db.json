@@ -9,19 +9,13 @@
       "pilotos": [
         {
           "id": "01",
-          "nombre": "Max Verstappen",
+          "nombre": "Pepito",
           "imagen": "",
           "rol": "Líder"
         },
         {
           "id": "02",
-          "nombre": "Max Verstappen",
-          "imagen": "",
-          "rol": "Líder"
-        },
-        {
-          "id": "03",
-          "nombre": "Max Verstappen",
+          "nombre": "Sutano",
           "imagen": "",
           "rol": "Líder"
         }
@@ -81,7 +75,8 @@
           "piloto": 1
         }
       ],
-      "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Silverstone_Circuit_2020_layout.png"
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Silverstone_Circuit_2020_layout.png",
+      "id": "d1ce"
     }
   ],
   "vehiculos": [
@@ -110,7 +105,8 @@
           }
         }
       },
-      "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/89/Max_Verstappen_2023_Austria_FP2_%28cropped%29.jpg"
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/89/Max_Verstappen_2023_Austria_FP2_%28cropped%29.jpg",
+      "id": "70d8"
     }
   ]
 }
