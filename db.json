@@ -9,9 +9,9 @@
       "pilotos": [
         {
           "id": "01",
-          "nombre": "Pepito",
-          "imagen": "",
-          "rol": "Líder"
+          "nombre": "Pepito0",
+          "imagen": "imagenN",
+          "rol": "LíderR"
         },
         {
           "id": "02",
